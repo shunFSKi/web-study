@@ -15,6 +15,10 @@ a {
 
 .topNavBar {
   padding: 20px 16px 20px 16px;
+  position: fixed
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 .topNavBar > nav {
   padding-top: 7px;
@@ -55,4 +59,9 @@ a {
 }
 .topNavBar .logo .card {
   color: #9a9da2;
+}
+.banner{
+  height: 516px;
+  background-image: url(./img/rs-cover-2-2-1-1.jpg);
+  border: 1px solid red
 }
