@@ -1,5 +1,5 @@
 body {
-    background-color: #F6F6F6;
+    background-color: rgb(155, 153, 153);
 }
 
 .taiji {
@@ -8,9 +8,11 @@ body {
 	border-left: 300px solid black;
 	border-right: 300px solid white;
     border-radius: 100%;
-    margin: auto;
+    margin:  100px auto;
+    animation: rolling 5s linear 0s infinite;
+    box-shadow: 0 0 50px #fff;
 }
-.taiji:before {
+.taiji::before {
     content: '';
     display: block;
     width: 100px;
@@ -20,7 +22,7 @@ body {
     background-color: white;
     margin-left: -150px;
 }
-.taiji:after {
+.taiji::after {
     content: '';
     display: block;
     width: 100px;
@@ -31,3 +33,10 @@ body {
     margin-left: -150px;
 }
 
+@keyframes rolling {
+    from {
+      transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
