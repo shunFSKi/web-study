@@ -83,11 +83,11 @@ hr {
 }
 
 .userCard {
-  border: 1px solid red;
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
   background-color: #FFFFFF;
+  box-shadow: 0px 3px 17px -1px rgba(0,0,0,0.34);
 }
 .userCard .welcome {
   background-color: #E8676B;
@@ -157,4 +157,51 @@ hr {
   height: 30px; 
   fill: white;
   vertical-align: top;
+}
+
+body > main {
+  margin-top: -350px;
+}
+body > main .downloadResume {
+  font-size: 14px;
+  line-height: 16px;
+  padding: 21px 55px;
+  display: inline-block;
+  border: 1px solid #CACDCF;
+  background: #EFEFEF;
+  border-radius: 3px;
+  color: #3d4451;
+  font-weight: bold;
+  margin: 32px 0;
+  transition: box-shadow 0.3s;
+}
+body > main .downloadResume:hover {
+  box-shadow: 0px 7px 17px 0px rgba(0,0,0,0.34);
+}
+body > main .downloadResume-wrapper {
+  text-align: center;
+}
+body > main .selfIntroduction {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-family: 'Franklin Gothic Medium';
+  color: #3d4451;
+  line-height: 1.5;
+}
+
+section.skills {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 60px;
+}
+section.skills > h2 {
+  text-align: center;
+  color: #3d4451;
+  font-size: 34px;
+  line-height: 1.2;
+  font-weight: 600;
+  
 }
