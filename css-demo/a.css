@@ -197,13 +197,15 @@ body > main .selfIntroduction {
   line-height: 1.5;
 }
 
-section.skills {
+section.skills,
+section.showreel {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 60px;
 }
-section.skills h2 {
+section.skills h2,
+section.showreel h2 {
   text-align: center;
   color: #3d4451;
   font-size: 34px;
@@ -242,4 +244,59 @@ section.skills .progressBar > .progress {
   background: #E8676B;
   width: 70%;
   border-radius: 2px;
+}
+section.showreel {
+  text-align: center;
+  margin-bottom: 200px;
+}
+section.showreel > nav {
+  text-align: center;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 32px;
+}
+section.showreel > nav > ol {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 auto;
+}
+section.showreel > nav > ol > li {
+  float: left;
+  margin-left: 40px;
+  cursor: pointer;
+}
+section.showreel > nav > ol > li:nth-child(1) {
+  margin-left: 0;
+}
+section.showreel > nav .bar {
+  height: 5px;
+  background: white;
+  margin-top: 5px;
+  margin-bottom: 30px;
+  border-radius: 3px;
+}
+section.showreel > nav .bar-inner {
+  height: 100%;
+  background: #E8676B;
+  border-radius: 3px;
+  transition: all 0.4s;
+}
+section.showreel > nav .bar.state-1 .bar-inner {
+  margin-left: 0;
+  width: 50px;
+}
+section.showreel > nav .bar.state-2 .bar-inner {
+  margin-left: 65px;
+  width: 50px;
+}
+section.showreel > nav .bar.state-3 .bar-inner {
+  margin-left: 140px;
+  width: 96px;
+}
+section.showreel .works {
+  position: relative;
+}
+section.showreel .works > .big,
+section.showreel .works > .small {
+  position: absolute;
 }

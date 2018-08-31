@@ -121,7 +121,7 @@
           HTML 5 &amp; CSS 3
         </h3>
         <div class="progressBar">
-          <div class="progress"></div>
+          <div class="progress" style="width: 30%"></div>
         </div>
       </li>
       <li>
@@ -129,7 +129,7 @@
           Swift
         </h3>
         <div class="progressBar">
-          <div class="progress"></div>
+          <div class="progress" style="width: 90%"></div>
         </div>
       </li>
       <li>
@@ -137,7 +137,7 @@
           JavaScript
         </h3>
         <div class="progressBar">
-          <div class="progress"></div>
+          <div class="progress" style="width: 10%"></div>
         </div>
       </li>
       <li>
@@ -145,7 +145,7 @@
           Objective-C
         </h3>
         <div class="progressBar">
-          <div class="progress"></div>
+          <div class="progress" style="width: 95%"></div>
         </div>
       </li>
       <li>
@@ -153,7 +153,7 @@
           HTTP
         </h3>
         <div class="progressBar">
-          <div class="progress"></div>
+          <div class="progress" style="width: 50%"></div>
         </div>
       </li>
       <li>
@@ -161,25 +161,45 @@
           React
         </h3>
         <div class="progressBar">
-          <div class="progress"></div>
+          <div class="progress" style="width: 20%"></div>
         </div>
       </li>
     </ol>
   </section>
-  <section>
+  <section class="showreel">
     <h2>作品集</h2>
     <nav>
-      <ol>
-        <li>所有</li>
-        <li>框架</li>
-        <li>原生JS&amp;CSS</li>
+      <ol class="clearfix">
+        <li id="portfolio1">所有</li>
+        <li id="portfolio2">框架</li>
+        <li id="portfolio3">原生JS&amp;CSS</li>
       </ol>
+      <div id="portfolioBar" class="bar state-1">
+        <div class="bar-inner"></div>
+      </div>
     </nav>
+    <script>
+      portfolio1.onclick = function () {
+        portfolioBar.className = 'bar state-1'
+      }
+      portfolio2.onclick = function () {
+        portfolioBar.className = 'bar state-2'
+      }
+      portfolio3.onclick = function () {
+        portfolioBar.className = 'bar state-3'
+      }
+    </script>
 
-    <div class="jobs">
-      <div class="big"></div>
-      <div class="small"></div>
-      <div class="small"></div>
+    <div class="works" style="height: 597px;">
+      <div class="big" style="top: 0; left: 0;">
+        <img src="./img/1.jpg" alt="作品1">
+      </div>
+      <div class="small" style="top: 0; left: 645px;">
+        <img src="./img/kaboompics-1-2-1-1-294x278.jpg" alt="作品2">
+      </div>
+      <div class="small" style="top: 297px; left: 645px;">
+        <img src="./img/3.jpg" alt="作品3">
+      </div>
     </div>
 
   </section>
