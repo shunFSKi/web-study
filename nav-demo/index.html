@@ -10,125 +10,125 @@
 </head>
 
 <body>
-    <header></header>
-    <main>
-        <div class="wrapper" id="main"></div>
-    </main>
-    <footer></footer>
-    <script>
-        var keys_Hash = init()
-        var keys = keys_Hash.keys
-        var websites = keys_Hash.websites
+<header></header>
+<main>
+    <div class="wrapper" id="main"></div>
+</main>
+<footer></footer>
+<script>
+    var keys_Hash = init()
+    var keys = keys_Hash.keys
+    var websites = keys_Hash.websites
 
-        configKeyboard(keys, websites)
-        listenToUser(websites)
+    configKeyboard(keys, websites)
+    listenToUser(websites)
 
-        function init() {
+    function init() {
 
-            var keys = [
-                ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
-                ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
-                ['z', 'x', 'c', 'v', 'b', 'n', 'm']
-            ]
-            var websites = {
-                'q': 'qq.com',
-                'w': 'weibo.com',
-                'e': 'ebay.com',
-                'r': 'renren.com',
-                't': 'tencent.com',
-                'y': 'youtube.com',
-                'u': 'uc.cn',
-                'i': 'iqiyi.com',
-                'o': 'oppo.com',
-                'p': 'pgyer.com',
-                'a': 'acfun.cn',
-                's': 'sohu.com'
-            }
-
-            var websites_LocalStorage = getLocalWebsitesHash('websiteHash')
-            if (websites_LocalStorage) {
-                websites = websites_LocalStorage
-            }
-            return { 'keys': keys, 'websites': websites }
+        var keys = [
+            ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
+            ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
+            ['z', 'x', 'c', 'v', 'b', 'n', 'm']
+        ]
+        var websites = {
+            'q': 'qq.com',
+            'w': 'weibo.com',
+            'e': 'ebay.com',
+            'r': 'renren.com',
+            't': 'tencent.com',
+            'y': 'youtube.com',
+            'u': 'uc.cn',
+            'i': 'iqiyi.com',
+            'o': 'oppo.com',
+            'p': 'pgyer.com',
+            'a': 'acfun.cn',
+            's': 'sohu.com'
         }
 
-        function configKeyboard(keys, websites) {
-            for (let index = 0; index < keys.length; index++) {
-                var key_div = document.createElement('div')
-                key_div.className = 'row'
-                main.appendChild(key_div)
+        var websites_LocalStorage = getLocalWebsitesHash('websiteHash')
+        if (websites_LocalStorage) {
+            websites = websites_LocalStorage
+        }
+        return {'keys': keys, 'websites': websites}
+    }
 
-                var row_keys = keys[index]
-                for (var key in row_keys) {
-                    var element = row_keys[key]
-                    var key_span = creatKeySpan(element)
-                    var key_Btn = creatKeyBtn(element)
-                    var key_kbd = document.createElement('kbd')
-                    var key_img = creatKeyImage(websites[element])
+    function configKeyboard(keys, websites) {
+        for (let index = 0; index < keys.length; index++) {
+            var key_div = document.createElement('div')
+            key_div.className = 'row'
+            main.appendChild(key_div)
 
-                    key_kbd.className = 'key'
+            var row_keys = keys[index]
+            for (var key in row_keys) {
+                var element = row_keys[key]
+                var key_span = creatKeySpan(element)
+                var key_Btn = creatKeyBtn(element)
+                var key_kbd = document.createElement('kbd')
+                var key_img = creatKeyImage(websites[element])
 
-                    key_kbd.appendChild(key_span)
-                    key_kbd.append(key_Btn)
-                    key_kbd.append(key_img)
+                key_kbd.className = 'key'
 
-                    key_div.appendChild(key_kbd)
-                }
+                key_kbd.appendChild(key_span)
+                key_kbd.append(key_Btn)
+                key_kbd.append(key_img)
+
+                key_div.appendChild(key_kbd)
             }
         }
+    }
 
-        function creatKeyImage(domain) {
-            var image = document.createElement('img')
-            if (domain) {
-                image.src = 'http://' + domain + '/favicon.ico'
-            } else {
-                image.src = './error.png'
+    function creatKeyImage(domain) {
+        var image = document.createElement('img')
+        if (domain) {
+            image.src = 'http://' + domain + '/favicon.ico'
+        } else {
+            image.src = './error.png'
+        }
+        image.onerror = function (imageError) {
+            image = './error.png'
+        }
+        return image
+    }
+
+    function creatKeySpan(textContent) {
+        var key_span = document.createElement('span')
+        key_span.textContent = textContent
+        key_span.className = 'text'
+        return key_span
+    }
+
+    function creatKeyBtn(id) {
+        var keyBtn = document.createElement('button')
+        keyBtn.textContent = 'Edit'
+        keyBtn.id = id
+        keyBtn.onclick = function (keyBtnClick) {
+            var button = keyBtnClick.target
+            var img = button.previousSibling
+            var key = button.id
+            var newWebsite = prompt('请输入要修改的网址')
+            websites[key] = newWebsite
+            img.src = 'http://' + newWebsite + '/favicon.ico'
+            img.onerror = function (imageError) {
+                img = './error.png'
             }
-            image.onerror = function (imageError) {
-                image = './error.png'
-            }
-            return image
+            localStorage.setItem('websiteHash', JSON.stringify(websites))
         }
 
-        function creatKeySpan(textContent) {
-            var key_span = document.createElement('span')
-            key_span.textContent = textContent
-            key_span.className = 'text'
-            return key_span
-        }
+        return keyBtn
+    }
 
-        function creatKeyBtn(id) {
-            var keyBtn = document.createElement('button')
-            keyBtn.textContent = 'Edit'
-            keyBtn.id = id
-            keyBtn.onclick = function (keyBtnClick) {
-                var button = keyBtnClick.target
-                var img = button.previousSibling
-                var key = button.id
-                var newWebsite = prompt('请输入要修改的网址')
-                websites[key] = newWebsite
-                img.src = 'http://' + newWebsite + '/favicon.ico'
-                img.onerror = function (imageError) {
-                    img = './error.png'
-                }
-                localStorage.setItem('websiteHash', JSON.stringify(websites))
-            }
+    function getLocalWebsitesHash(hashName) {
+        return JSON.parse(localStorage.getItem(hashName) || 'null')
+    }
 
-            return keyBtn
+    function listenToUser(websites) {
+        document.onkeypress = function (cusKeyPress) {
+            var key = cusKeyPress.key
+            var website = websites[key]
+            window.open('http://' + website, '_blank')
         }
-
-        function getLocalWebsitesHash(hashName) {
-            return JSON.parse(localStorage.getItem(hashName) || 'null')
-        }
-
-        function listenToUser(websites) {
-            document.onkeypress = function (cusKeyPress) {
-                var key = cusKeyPress.key
-                var website = websites[key]
-                window.open('http://' + website, '_blank')
-            }
-        }
-    </script>
+    }
+</script>
 </body>
 
 </html>
